@@ -13,7 +13,7 @@ export default class APNNotification extends BaseNotification {
   constructor(config) {
     super(config);
 
-    this.setProvider(new apn.Connection(this.get('provider')));
+    this.setProvider(new apn.Provider(this.get('provider')));
 
     this
       .getProvider()
