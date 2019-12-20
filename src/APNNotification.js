@@ -45,8 +45,8 @@ export default class APNNotification extends BaseNotification {
 
     notification.sound = customNotification.sound || predefinedNotification.sound;
     notification.badge = customNotification.badge || predefinedNotification.badge;
-    notification.setAlertTitle(customNotification.title || predefinedNotification.title);
-    notification.setAlertText(customNotification.body || predefinedNotification.body);
+    notification.alert.title = customNotification.title || predefinedNotification.title;
+    notification.alert.body = customNotification.body || predefinedNotification.body;
 
     return _.merge(notification, _config);
   }
