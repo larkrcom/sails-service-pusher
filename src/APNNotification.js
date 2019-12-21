@@ -22,16 +22,6 @@ export default class APNNotification extends BaseNotification {
   }
 
   /**
-   * Create apn device with specified token
-   * @param {String} _token Device token
-   * @returns {Device}
-   * @private
-   */
-  createDevice(_token) {
-    return new apn.Device(_token);
-  }
-
-  /**
    * Create apn notification
    * @param {Object} _notification Configuration for the notification
    * @param {Object} _config Additional configuration for the notification object
@@ -43,10 +33,13 @@ export default class APNNotification extends BaseNotification {
     let customNotification = _notification || {};
     let notification = new apn.Notification(customNotification.payload || predefinedNotification.payload || {});
 
+console.log(notification);
+
     notification.sound = customNotification.sound || predefinedNotification.sound;
     notification.badge = customNotification.badge || predefinedNotification.badge;
-    notification.alert.title = customNotification.title || predefinedNotification.title;
-    notification.alert.body = customNotification.body || predefinedNotification.body;
+    notification.title = customNotification.title || predefinedNotification.title;
+    notification.alert = customNotification.body || predefinedNotification.body;
+    notification.topic = customNotification.topic || predefinedNotification.topic;
 
     return _.merge(notification, _config);
   }
@@ -59,7 +52,7 @@ export default class APNNotification extends BaseNotification {
    * @private
    */
   sendToDevice(_device, _notification) {
-    this.getProvider().pushNotification(_notification, _device);
+    this.getProvider().send(_notification, _device);
     return this;
   }
 
@@ -84,7 +77,7 @@ export default class APNNotification extends BaseNotification {
     let notification = this.createNotification(_notification, _config);
 
     for (let i = 0; i < device.length; i++) {
-      this.sendToDevice(this.createDevice(device[i]), notification);
+      this.sendToDevice(device[i], notification);
     }
 
     return Promise.resolve();

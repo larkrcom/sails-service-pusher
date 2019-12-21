@@ -379,9 +379,9 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
-"apn@https://github.com/node-apn/node-apn.git":
+"apn@git+https://github.com/node-apn/node-apn.git":
   version "3.0.0"
-  resolved "https://github.com/node-apn/node-apn.git#38a357ed0c153aad09c2857e48a710527e685bfc"
+  resolved "git+https://github.com/node-apn/node-apn.git#38a357ed0c153aad09c2857e48a710527e685bfc"
   dependencies:
     debug "^3.1.0"
     http2 "https://github.com/node-apn/node-http2/archive/apn-2.1.4.tar.gz"
