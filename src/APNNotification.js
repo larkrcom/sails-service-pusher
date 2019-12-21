@@ -39,7 +39,7 @@ console.log(notification);
     notification.badge = customNotification.badge || predefinedNotification.badge;
     notification.title = customNotification.title || predefinedNotification.title;
     notification.alert = customNotification.body || predefinedNotification.body;
-    notification.topic = customNotification.topic || predefinedNotification.topic;
+    notification.topic = _config.topic;
 
     return _.merge(notification, _config);
   }
