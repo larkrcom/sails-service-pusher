@@ -37,7 +37,7 @@ export default class APNNotification extends BaseNotification {
     notification.badge = customNotification.badge || predefinedNotification.badge;
     notification.title = customNotification.title || predefinedNotification.title;
     notification.alert = customNotification.body || predefinedNotification.body;
-    notification.alert = customNotification.body || predefinedNotification.body;
+    notification.payload = customNotification.payload || predefinedNotification.payload;
     notification.topic = this._config.provider.topic;
 
     var note = _.merge(notification, _config);
